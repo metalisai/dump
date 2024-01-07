@@ -1,0 +1,55 @@
+
+		<?php 
+		if(!empty($_GET['forumid']))
+			$activeForum = getForum($_GET['forumid']);
+		else
+			$activeForum = null;
+			
+		$activeCat = getCategory($activeForum['category']);
+		
+		if($activeForum && $activeCat):
+			if($activeForum['users_only'] == false && $activeCat['users_only'] == false  || is_logged_in()): ?>
+				<div class="catTitle"><h1><?php echo $activeForum['name'];?></h1></div>
+				<div id="threadsBox"> 
+					<table id="threads">
+						<tr>
+						  <th></th>
+						  <th>Teema</th> 
+						  <th>Autor</th>
+						  <th>Viimane postitus</th>
+						</tr>
+						<?php 
+						$forumid=$_GET["forumid"];
+						foreach(getThreads($forumid) as $teema):?>
+						<tr>
+						  <td class="column_1">1</td>
+						  <td class="column_2"><a href="<?php echo '?mode=posts&threadid='.$teema['id']?>" 
+								style="float:left"><?php echo $teema['name'].
+								((is_admin())?('<a href="?mode=deletethread&threadid='.$teema['id'].'&forumid='.$_GET['forumid']. // kui on admin siis kuva teema kustutamise link
+								'" style="float:right"> (x)</a>'):(''));?></a></td>
+						  <td class="column_3"><?php echo $teema['dateCreated'];?> <br><?php echo getUsername($teema['creator']);?></td>
+						  <td class="column_4"><?php echo $teema['dateCreated'];?> <br><?php echo getUsername($teema['creator']);?></td>
+						</tr>
+						<?php endforeach;?>
+					</table>
+					<div class="postfield">
+					<?php if(is_logged_in()):?>
+					<form action="<?php echo '?mode=makethread&forumid='.$_GET['forumid']; ?>" id="postform" method="post">
+					<label>Teema: </label><input type="text" name="title"> <br><br>
+					<textarea rows="10" name="postText"></textarea>
+					<input type="submit" value="Loo teema">
+					</form>
+					<?php 
+					else:
+					echo '<div id="login-error">Selleks, et postitada, pead sisse logima!</div>';
+					endif; ?>
+					</div>
+				</div>
+				<?php
+			else:
+				echo "<div id='login-error'>Selleks, et siia pääseda pead olema sisselogitud!</div>";
+			endif;
+		else:
+			echo "<div id='login-error'>Error 404. Lehte ei leitud!</div>";
+		endif;
+		?>

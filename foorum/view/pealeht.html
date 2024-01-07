@@ -1,0 +1,21 @@
+﻿	
+	<?php 
+	$catCount = 0;
+	foreach(getCategories() as $kategooria): //tsükkel läbi kõikide kategooriate?> 
+		<div class="catTitle" onclick="peidaKategooria(<?php echo $catCount;?>)"><h1><?php echo $kategooria['name'];?></h1></div>
+		<table class="category category<?php echo $catCount;?>">
+			<tr>
+				<th></th> 
+				<th>Foorum</th>
+				<th>Postitusi</th>
+			</tr>
+			<?php foreach(getForums($kategooria['id']) as $forum): // tsükkel läbi kategorria foorumite?>
+			<tr>
+				<td class="column_1"><img src="<?php echo (false ? "img/newposts.png" : "img/nonewposts.png"); // kui on uuesi postitusi on ikoon värviline?>" alt="newposts"></td>
+				<td class="column_2"><a href="?mode=threads&forumid=<?php echo $forum['id'];?>"><?php echo $forum['name'];?></a></td> 
+				<td class="column_3"><?php echo getNumPosts($forum['id']);?></td>
+			</tr>
+			<?php endforeach;?>
+		</table>
+		<?php $catCount++;?>
+	<?php endforeach;?>

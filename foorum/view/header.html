@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <link href="style.css" rel="stylesheet" type="text/css">
+ <title>Foorum</title>
+ <script>
+	function peidaKategooria(id){
+		var peidetavad = document.getElementsByClassName("category"+id);
+		for(var i=0; i<peidetavad.length; i++) {
+			if(peidetavad[i].style.display != 'none')
+				peidetavad[i].style.display = 'none';
+			else
+				peidetavad[i].style.display = 'table';
+		}
+	}
+ </script>
+</head>
+<body>
+<div id="menu">
+	<ul>
+		<li><a href="?mode=pealeht">Esileht</a></li>
+		<li><a href="?mode=users">Liikmed</a></li>
+		<li><a href="?mode=login"><?php echo htmlspecialchars((is_logged_in()?"Logi välja":"Logi sisse"));?></a></li>
+	</ul>
+	<div id="loggedin">
+	<?php
+	if(isset($_SESSION["username"]) && $_SESSION["username"]) {
+		?>
+		Tere, <?php echo $_SESSION["username"]; ?>.
+		<?php
+	}
+	?>
+	</div>
+</div>
+<div id="wrapper">
+	<div id="content">

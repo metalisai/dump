@@ -1,0 +1,20 @@
+
+		<div class="catTitle"><h1>Logi sisse</h1></div>
+		<div id="login-box"> 
+			<form method="post" action="?mode=aut">
+				<label>Kasutajanimi:</label><input type="text" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''?>"><br>
+				<label>Salsõna:</label><input type="password" name="pwd"> <br>
+				<input type="submit" value="Logi sisse" style="margin-left:160px;">
+			</form>
+			<a href="?mode=register" style="margin-left:160px;">Registreeru</a>
+			<br>
+		</div>
+		<?php if (isset($errors)):?>
+			<?php foreach($errors as $error):?>
+				<div id="login-error">
+					<?php echo htmlspecialchars($error); ?>
+				</div>
+			<?php endforeach;?>
+		<?php endif;?>
+	</div>
+	<div id="clear"></div>

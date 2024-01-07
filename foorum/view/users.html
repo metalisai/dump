@@ -1,0 +1,13 @@
+
+		<div class="catTitle"><h1>Liikmed</h1></div>
+		<div class="members-box"> 
+			<ul>
+			<h2>Foorumi liikmed</h2>
+			<?php 
+				$members = getAllMembers();
+				foreach($members as  $member):
+					echo '<ol>'.$member['username'].'</ol>';
+				endforeach;
+			?>
+			</ul>
+		</div>

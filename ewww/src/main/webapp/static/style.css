@@ -1,0 +1,88 @@
+body {
+  font-size: 12px;
+  font-family: arial, sans-serif;
+  color: #333;
+  width:500px;
+}
+
+#messageBlock {
+    color: #000;
+    background-color: #EEffEE;
+    border: 3px solid #00cc00;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+#messageBlock.errorBlock {
+    background-color: #ffEEEE;
+    border: 3px solid #ff0000;
+}
+
+#login {
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:10%;
+  width:250px;
+  height:200px;
+  text-align: right;
+}
+
+#menu {
+  margin: 0 auto;
+  padding: 0px 0px 15px 0px;
+  display: inline;
+}
+
+#menu li {
+  text-align: left;
+  display: inline;
+  list-style: none;
+  padding: 3px 10px 3px 10px;
+  border: 1px solid #999;
+}
+
+#menu li a {
+  text-decoration: none;
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  padding: 0px;
+  color: #0066ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.formTable {
+  background: #fff;
+  border-collapse: collapse;
+  border: 1px solid #999;
+  text-align: left;
+}
+
+.formTable td {
+  padding: 1px 8px;
+}
+
+.listTable {
+  background: #fff;
+  margin: 0px;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.listTable th {
+  font-weight: normal;
+  padding: 0px 8px;
+  border-bottom: 2px solid #000;
+}
+
+.listTable td {
+  padding: 9px 8px 0px 8px;
+}
+
+.listTable td.buttons {
+  text-align: right;
+}
